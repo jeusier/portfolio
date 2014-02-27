@@ -1,4 +1,2 @@
-portfolio
-=========
-
-Portfolio using sails.js
+# portfolio
+### a Sails application
