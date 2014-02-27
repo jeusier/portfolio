@@ -25,14 +25,77 @@ module.exports = {
    */
    index: function (req, res) {
 
-    return res.view();
+    Project.find().done(function(err, projects) {
+
+      if(err != null) return res.json({error:err});
+
+      return res.view({
+        projects: projects,
+      });
+
+    });
+
+  },
+
+    /**
+   * Action blueprints:
+   *    `/project/new`
+   */
+   new: function (req, res) {
+    
+   return res.view();
+
+  },
+
+      /**
+   * Action blueprints:
+   *    `/project`
+   */
+   create: function (req, res) {
+    
+    // create an instance of the Project model
+    Project.create({
+      name: req.body.name,
+      about: req.body.about,
+      description: req.body.description,
+      url: req.body.url
+    },
+    function(err) {
+      // handle any errors in saving
+      if(err != null) return res.json({error:err});
+
+      // render the template with found projects
+      return res.redirect('/project');
+    });
+
+  },
+
+    /**
+   * Action blueprints:
+   *    `/project/show`
+   */
+   find: function (req, res) {
+    
+    // find the document by id
+    Project.findOne(req.params.id).done(function(err, project) {
+
+      // handle any errors
+      if(err != null) return res.json({error:err});
+
+      // render the template with the found project
+      return res.view({
+        project: project,
+      });
+
+    });
 
   },
 
 
   /**
    * Action blueprints:
-   *    `/project/show`
+   *    `/project/:id`
+   *    `/project/find/:id`
    */
    show: function (req, res) {
     
