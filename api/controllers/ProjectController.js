@@ -82,6 +82,7 @@ module.exports = {
       // handle any errors
       if(err != null) return res.json({error:err});
 
+
       // render the template with the found project
       return res.view({
         project: project,
@@ -113,8 +114,41 @@ module.exports = {
    edit: function (req, res) {
     
     // Send a JSON response
-    return res.json({
-      hello: 'world'
+    Project.findOne(req.params.id).done(function(err, project) {
+      
+      if(err != null) return res.json({error:err});
+
+      res.view({
+        project: project
+      });
+
+    });
+  },
+
+    /**
+   * Action blueprints:
+   *    `/project/:id`
+   */
+   update: function (req, res) {
+    
+    // Send a JSON response
+    Project.findOne(req.params.id).done(function(err, project) {
+      
+      if(err != null) return res.json({error:err});
+
+      project.name = req.body.name;
+      project.about = req.body.about;
+      project.description = req.body.description;
+      project.url = req.body.url;
+
+      project.save(function(err) {
+        
+        if(err != null) return res.json({error:err});
+
+      });
+
+      return res.redirect('/project/'+req.params.id);
+
     });
   },
 
@@ -125,10 +159,20 @@ module.exports = {
    */
    delete: function (req, res) {
     
-    // Send a JSON response
-    return res.json({
-      hello: 'world'
+    Project.findOne(req.params.id).done(function(err, project) {
+     
+     if(err != null) return res.json({error:err});
+
+      project.destroy(function(err) {
+        
+        if(err != null) return res.json({error:err});
+      
+      });
+
+    res.redirect('/project');
+
     });
+
   },
 
 

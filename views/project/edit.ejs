@@ -1,0 +1,21 @@
+<h1>Edit Project</h1>
+<form action="/project/<%= project.id %>", method="post", role="form">
+    <input type="hidden", name="_method", value="put">
+    <div class="form-group">
+        <label for="name"> Name </label>
+        <input class="form-control", id="name", type="text", name="name", value="<%= project.name %>">
+    </div>
+    <div class="form-group">
+        <label for="about"> About </label>
+        <textarea class="form-control", id="about", name="about"><%= project.about %></textarea>
+    </div>
+    <div class="form-group">
+        <label for="description"> Description </label>
+        <textarea class="form-control", id="description", name="description"><%= project.description %></textarea>
+    </div>
+    <div class="form-group">
+        <label for="url"> Url </label>
+        <input class="form-control", id="url", type="text", name="url", value="<%= project.url %>">
+    </div>
+        <button type="submit", class="btn btn-primary"> Edit </button>
+</form>
