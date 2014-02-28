@@ -162,14 +162,16 @@ module.exports = {
     Project.findOne(req.params.id).done(function(err, project) {
      
      if(err != null) return res.json({error:err});
-
+      console.log("here");
+      console.log(err);
+      console.log(err!=null);
       project.destroy(function(err) {
         
         if(err != null) return res.json({error:err});
       
       });
 
-    res.redirect('/project');
+    return res.redirect('/project');
 
     });
 
