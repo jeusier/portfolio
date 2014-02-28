@@ -3,9 +3,10 @@
 <p>Description: <%= project.description %></p>
 
 <a href="/project/edit/<%= project.id %>">
-    <button type="button">Edit</button>
+    <button type="button" class="btn btn-warning">Edit</button>
 </a>
 
-<a href="/project/delete/<%= project.id %>">
-    <button type="button">Destroy</button>
-</a>
+<form role="form" action="/project/delete/<%= project.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit" class="btn btn-danger">Destroy</button>
+</form>
