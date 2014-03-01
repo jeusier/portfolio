@@ -1,0 +1,16 @@
+<h1>Create Blog Post</h1>
+<form action="/blog/create", method="post", role="form">
+    <div class="form-group">
+        <label for="title"> Post Title </label>
+        <input class="form-control", id="title", type="text", name="title", placeholder="Enter Post Title">
+    </div>
+    <div class="form-group">
+        <label for="content"> Post Content </label>
+        <textarea class="form-control", id="content", name="content", placeholder="Enter Post Content"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="tags"> Post Tags </label>
+        <input class="form-control", id="tags", type="text", name="tags", placeholder="Enter Post Tags">
+    </div>
+        <button type="submit", class="btn btn-info"> Submit Post</button>
+</form>

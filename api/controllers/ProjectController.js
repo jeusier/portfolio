@@ -31,6 +31,7 @@ module.exports = {
 
       return res.view({
         projects: projects,
+        name: 'project',
       });
 
     });
@@ -85,25 +86,11 @@ module.exports = {
 
       // render the template with the found project
       return res.view({
-        project: project,
+        project: project
       });
 
     });
 
-  },
-
-
-  /**
-   * Action blueprints:
-   *    `/project/:id`
-   *    `/project/find/:id`
-   */
-   show: function (req, res) {
-    
-    // Send a JSON response
-    return res.json({
-      hello: 'jCurray'
-    });
   },
 
 

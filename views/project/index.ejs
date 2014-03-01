@@ -1,9 +1,20 @@
-<h1>All Projects</h1>
-<ul>
-<% projects.forEach(function(project){ %>
-    <li><a href="/project/<%= project.id %>"><%= project.name %></a>
-    </li>
-<% }) %>
-</ul>
-<a href="/project/new">
-    <button type="button", class="btn btn-primary">New Project</button>
+<div class="jumbotron">
+    <h1>Welcome to Jason's Project Portfolio!</h1>
+        <p class="lead">Many of my past projects will be displayed on this site.</p>
+</div> <!-- end of div jumbotron -->
+
+<div class="row main">
+    <div class="col-lg-12">
+        <% projects.forEach(function(project){ %>
+        <div class="section-block">
+            <a href="/project/<%= project.id %>">
+                <h2><%= project.name %></h4>
+            </a>
+            <h3>About Project</h3>
+            <p><%= project.about %></p>
+            <h3>Description</h3>
+            <p><%= project.description %>
+        </div>
+        <% }) %>
+    </div> <!-- end of div col-lg-12 -->
+</div> <!-- end of div row main -->
